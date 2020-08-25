@@ -1,7 +1,8 @@
 name: cron
 on:
-  schedule:
-    - cron:  '*/15 * * * *'
+  - schedule:
+    - cron: '*/15 * * * *'
+  - push
 
 jobs:
   crawl:
