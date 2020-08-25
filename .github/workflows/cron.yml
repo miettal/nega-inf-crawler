@@ -1,8 +1,8 @@
 name: cron
 on:
-  - schedule:
-    - cron: '*/15 * * * *'
-  - push
+  schedule:
+    - cron: '0 0 * * *'
+  push:
 
 jobs:
   crawl:
@@ -11,4 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: pip install .
-      - run: scrapy crawl milt-nega-inf
+      - run: scrapy crawl milt-nega-inf -o results/$(date +%Y%m%d).csv
+      - run: git add results/
+      - run: git config --global user.email "iharahiromasa@gmail.com"
+      - run: git config --global user.name "Hiromasa Ihara"
+      - run: git commit -m 'auto crawl'
+      - run: git push
