@@ -9,5 +9,5 @@ jobs:
     container: python
     steps:
       - uses: actions/checkout@v2
-      - run: spip install .
+      - run: pip install .
       - run: scrapy crawl milt-nega-inf
