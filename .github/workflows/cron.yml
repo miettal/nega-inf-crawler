@@ -1,0 +1,13 @@
+name: ci
+on:
+  schedule:
+    - cron:  '*/15 * * * *'
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    container: python
+    steps:
+      - uses: actions/checkout@v2
+      - run: spip install .
+      - run: scrapy crawl milt-nega-inf
